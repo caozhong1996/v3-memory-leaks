@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="hello-vue"></div>
+</body>
+<script src="./vue.js"></script>
+<script>
+const HelloVueApp = {
+  template: `
+    <button 
+      id="test" 
+      @click="myMetd"
+    >
+      Button that causes memory leaks
+    </button>
+
+    <div v-for="item in 1000" v-bind:key="item">
+      <MyComponent />
+    </div>
+  `,
+  components: {
+    MyComponent: {
+      template: `
+        <div>
+          Default component
+        </div>
+      `
+    }
+  },
+  methods: {
+    myMetd() {
+      console.log('hi from method :)');
+    }
+  }
+}
+
+Vue.createApp(HelloVueApp).mount('#hello-vue')
+</script>
+</html>
