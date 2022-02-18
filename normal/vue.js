@@ -9134,7 +9134,7 @@ var Vue = (function (exports) {
             if (parent) {
               const nodeList = child.querySelectorAll ? child.querySelectorAll('*') : []
               for (let i = 0; i < nodeList.length; i ++) {
-                removeVEI(nodeList)
+                removeVEI(nodeList[i])
               }
               removeVEI(child)
               parent.removeChild(child)
